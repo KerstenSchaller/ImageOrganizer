@@ -19,12 +19,13 @@ namespace ImageOrganizer
         int imageindex = 0;
         bool keyControlEnabled = false;
         ImageOrganizer imageOrganizer;
+        
 
         public Form1()
         {
             InitializeComponent();
+            clearLabelDisplay();
 
-          
         }
 
   
@@ -61,18 +62,21 @@ namespace ImageOrganizer
                     if (keyControlEnabled == true)
                     {
                         setImageBox("right");
+                        setLabelDisplay();
                     }
                     break;
                 case Left:
                     if (keyControlEnabled == true)
                     {
                         setImageBox("left");
+                        setLabelDisplay();
                     }
                     break;
                 case returnenter:
                     if (keyControlEnabled == true)
                     {
                         setImageBox();
+                        setLabelDisplay();
                     }
 
                     break;
@@ -80,6 +84,7 @@ namespace ImageOrganizer
                     if (keyControlEnabled == true)
                     {
                         imageOrganizer.setLabel(imageindex,"_loeschen");
+                        setLoeschenLabelDisplay();
                     }
 
                     break;
@@ -87,6 +92,7 @@ namespace ImageOrganizer
                     if (keyControlEnabled == true)
                     {
                         imageOrganizer.setLabel(imageindex, "_bearbeiten");
+                        setbearbeitenLabelDisplay();
                     }
                     break;
                 case ctrl_three:
@@ -94,7 +100,7 @@ namespace ImageOrganizer
                     {
                         
                         imageOrganizer.setLabel(imageindex, "_weiterSortieren");
-
+                        setSortierenLabelDisplay();
                     }
                     break;
                 case ctrl_four:
@@ -144,6 +150,45 @@ namespace ImageOrganizer
         }
 
 
+        private void setLabelDisplay()
+        {
+            string label = imageOrganizer.getLabel(imageindex);
+            if (label == "_loeschen") setLoeschenLabelDisplay();
+            if (label == "_weiterSortieren") setSortierenLabelDisplay();
+            if (label == "_bearbeiten") setbearbeitenLabelDisplay();
+            if (label == "") clearLabelDisplay();
+
+
+        }
+
+        private void setLoeschenLabelDisplay()
+        {
+            DeleteLabelTextbox.BackColor = Color.Green;
+            WeiterbearbeitenTextBox.BackColor = Color.Red;
+            SortierenTextBox.BackColor = Color.Red;
+        }
+
+        private void setbearbeitenLabelDisplay()
+        {
+            DeleteLabelTextbox.BackColor = Color.Red;
+            WeiterbearbeitenTextBox.BackColor = Color.Green;
+            SortierenTextBox.BackColor = Color.Red;
+        }
+
+        private void setSortierenLabelDisplay()
+        {
+            DeleteLabelTextbox.BackColor = Color.Red;
+            WeiterbearbeitenTextBox.BackColor = Color.Red;
+            SortierenTextBox.BackColor = Color.Green;
+        }
+
+        private void clearLabelDisplay()
+        {
+            DeleteLabelTextbox.BackColor = Color.Red;
+            WeiterbearbeitenTextBox.BackColor = Color.Red;
+            SortierenTextBox.BackColor = Color.Red;
+        }
+
         /*Creates a bitmap from a file and uses dcraw conversion if needed*/
         private Bitmap createBitmap(FileInfo file)
         {
@@ -184,6 +229,8 @@ namespace ImageOrganizer
         {
 
         }
+
+
 
 
         /*Opens a folder dialog and loads a first image after a folder was chosen*/

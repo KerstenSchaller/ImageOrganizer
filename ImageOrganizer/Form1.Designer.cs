@@ -31,6 +31,9 @@
             this.picBox_Imageview = new System.Windows.Forms.PictureBox();
             this.SelectFolderButton = new System.Windows.Forms.Button();
             this.ApplyLabelsButton = new System.Windows.Forms.Button();
+            this.DeleteLabelTextbox = new System.Windows.Forms.TextBox();
+            this.WeiterbearbeitenTextBox = new System.Windows.Forms.TextBox();
+            this.SortierenTextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.picBox_Imageview)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,11 +67,41 @@
             this.ApplyLabelsButton.UseVisualStyleBackColor = true;
             this.ApplyLabelsButton.Click += new System.EventHandler(this.ApplyLabelsButton_Click);
             // 
+            // DeleteLabelTextbox
+            // 
+            this.DeleteLabelTextbox.Location = new System.Drawing.Point(13, 117);
+            this.DeleteLabelTextbox.Name = "DeleteLabelTextbox";
+            this.DeleteLabelTextbox.Size = new System.Drawing.Size(214, 20);
+            this.DeleteLabelTextbox.TabIndex = 4;
+            this.DeleteLabelTextbox.Text = "Löschen";
+            this.DeleteLabelTextbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // WeiterbearbeitenTextBox
+            // 
+            this.WeiterbearbeitenTextBox.Location = new System.Drawing.Point(13, 143);
+            this.WeiterbearbeitenTextBox.Name = "WeiterbearbeitenTextBox";
+            this.WeiterbearbeitenTextBox.Size = new System.Drawing.Size(214, 20);
+            this.WeiterbearbeitenTextBox.TabIndex = 5;
+            this.WeiterbearbeitenTextBox.Text = "Bearbeiten";
+            this.WeiterbearbeitenTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // SortierenTextBox
+            // 
+            this.SortierenTextBox.Location = new System.Drawing.Point(13, 169);
+            this.SortierenTextBox.Name = "SortierenTextBox";
+            this.SortierenTextBox.Size = new System.Drawing.Size(214, 20);
+            this.SortierenTextBox.TabIndex = 6;
+            this.SortierenTextBox.Text = "WeiterSortieren";
+            this.SortierenTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(942, 535);
+            this.Controls.Add(this.SortierenTextBox);
+            this.Controls.Add(this.WeiterbearbeitenTextBox);
+            this.Controls.Add(this.DeleteLabelTextbox);
             this.Controls.Add(this.ApplyLabelsButton);
             this.Controls.Add(this.SelectFolderButton);
             this.Controls.Add(this.picBox_Imageview);
@@ -76,6 +109,7 @@
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.picBox_Imageview)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -84,6 +118,9 @@
         private System.Windows.Forms.PictureBox picBox_Imageview;
         private System.Windows.Forms.Button SelectFolderButton;
         private System.Windows.Forms.Button ApplyLabelsButton;
+        private System.Windows.Forms.TextBox DeleteLabelTextbox;
+        private System.Windows.Forms.TextBox WeiterbearbeitenTextBox;
+        private System.Windows.Forms.TextBox SortierenTextBox;
     }
 }
 
