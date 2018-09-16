@@ -130,8 +130,11 @@ namespace ImageOrganizer
 
             if ((imageindex < files.Length) && (dir == "right"))
             {
-
-                imageindex++;
+                if ((imageindex + 1) < files.Length)
+                {
+                    imageindex++;
+                }
+                
             }
             else
             if ((imageindex > 0) && (dir == "left"))
