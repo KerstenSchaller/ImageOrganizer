@@ -30,6 +30,7 @@
         {
             this.picBox_Imageview = new System.Windows.Forms.PictureBox();
             this.SelectFolderButton = new System.Windows.Forms.Button();
+            this.ApplyLabelsButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picBox_Imageview)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,11 +54,22 @@
             this.SelectFolderButton.UseVisualStyleBackColor = true;
             this.SelectFolderButton.Click += new System.EventHandler(this.SelectFolderButtonClick);
             // 
+            // ApplyLabelsButton
+            // 
+            this.ApplyLabelsButton.Location = new System.Drawing.Point(13, 61);
+            this.ApplyLabelsButton.Name = "ApplyLabelsButton";
+            this.ApplyLabelsButton.Size = new System.Drawing.Size(214, 29);
+            this.ApplyLabelsButton.TabIndex = 3;
+            this.ApplyLabelsButton.Text = "Apply Labels";
+            this.ApplyLabelsButton.UseVisualStyleBackColor = true;
+            this.ApplyLabelsButton.Click += new System.EventHandler(this.ApplyLabelsButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(942, 535);
+            this.Controls.Add(this.ApplyLabelsButton);
             this.Controls.Add(this.SelectFolderButton);
             this.Controls.Add(this.picBox_Imageview);
             this.Name = "Form1";
@@ -71,6 +83,7 @@
 
         private System.Windows.Forms.PictureBox picBox_Imageview;
         private System.Windows.Forms.Button SelectFolderButton;
+        private System.Windows.Forms.Button ApplyLabelsButton;
     }
 }
 

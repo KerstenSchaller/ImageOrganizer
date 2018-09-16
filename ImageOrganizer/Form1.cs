@@ -47,8 +47,10 @@ namespace ImageOrganizer
             const Keys ctrl_Right = (Keys.Control | Keys.Right);
             const Keys ctrl_Left = (Keys.Control | Keys.Left);
             const Keys returnenter = (Keys.Return | Keys.Enter);
-            const Keys shft_one = (Keys.Shift | Keys.D1);
-            const Keys shft_two = (Keys.Shift | Keys.D2);
+            const Keys ctrl_one = (Keys.Control | Keys.D1);
+            const Keys ctrl_two = (Keys.Control | Keys.D2);
+            const Keys ctrl_three = (Keys.Control | Keys.D3);
+            const Keys ctrl_four = (Keys.Control | Keys.D4);
             const Keys ctrl_shft_a = (Keys.Shift | Keys.A | Keys.Control);
 
             DirectoryInfo di;
@@ -74,17 +76,31 @@ namespace ImageOrganizer
                     }
 
                     break;
-                case shft_one:
+                case ctrl_one:
                     if (keyControlEnabled == true)
                     {
-                        imageOrganizer.setLabel(imageindex,"Label1");
+                        imageOrganizer.setLabel(imageindex,"_loeschen");
                     }
 
                     break;
-                case shft_two:
+                case ctrl_two:
                     if (keyControlEnabled == true)
                     {
-                        imageOrganizer.setLabel(imageindex, "Label2");
+                        imageOrganizer.setLabel(imageindex, "_bearbeiten");
+                    }
+                    break;
+                case ctrl_three:
+                    if (keyControlEnabled == true)
+                    {
+                        
+                        imageOrganizer.setLabel(imageindex, "_weiterSortieren");
+
+                    }
+                    break;
+                case ctrl_four:
+                    if (keyControlEnabled == true)
+                    {
+                        
                     }
                     break;
                 case ctrl_shft_a:

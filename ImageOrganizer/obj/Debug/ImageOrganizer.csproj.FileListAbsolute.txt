@@ -7,3 +7,12 @@ C:\Users\kerst\Desktop\spl-1.2.1\ImageOrganizer\ImageOrganizer\obj\Debug\ImageOr
 C:\Users\kerst\Desktop\spl-1.2.1\ImageOrganizer\ImageOrganizer\obj\Debug\ImageOrganizer.exe
 C:\Users\kerst\Desktop\spl-1.2.1\ImageOrganizer\ImageOrganizer\obj\Debug\ImageOrganizer.pdb
 C:\Users\kerst\Desktop\spl-1.2.1\ImageOrganizer\ImageOrganizer\obj\Debug\ImageOrganizer.csprojResolveAssemblyReference.cache
+C:\Users\kerst\Documents\Visual Studio 2015\Projects\ImageOrganizer\ImageOrganizer\bin\Debug\ImageOrganizer.exe.config
+C:\Users\kerst\Documents\Visual Studio 2015\Projects\ImageOrganizer\ImageOrganizer\obj\Debug\ImageOrganizer.exe
+C:\Users\kerst\Documents\Visual Studio 2015\Projects\ImageOrganizer\ImageOrganizer\obj\Debug\ImageOrganizer.pdb
+C:\Users\kerst\Documents\Visual Studio 2015\Projects\ImageOrganizer\ImageOrganizer\bin\Debug\ImageOrganizer.exe
+C:\Users\kerst\Documents\Visual Studio 2015\Projects\ImageOrganizer\ImageOrganizer\bin\Debug\ImageOrganizer.pdb
+C:\Users\kerst\Documents\Visual Studio 2015\Projects\ImageOrganizer\ImageOrganizer\obj\Debug\ImageOrganizer.csprojResolveAssemblyReference.cache
+C:\Users\kerst\Documents\Visual Studio 2015\Projects\ImageOrganizer\ImageOrganizer\obj\Debug\ImageOrganizer.Form1.resources
+C:\Users\kerst\Documents\Visual Studio 2015\Projects\ImageOrganizer\ImageOrganizer\obj\Debug\ImageOrganizer.Properties.Resources.resources
+C:\Users\kerst\Documents\Visual Studio 2015\Projects\ImageOrganizer\ImageOrganizer\obj\Debug\ImageOrganizer.csproj.GenerateResource.Cache
