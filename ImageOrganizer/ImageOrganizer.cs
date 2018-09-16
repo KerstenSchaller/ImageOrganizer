@@ -46,6 +46,11 @@ namespace ImageOrganizer
             iOFileInfo.labels[Index] = label;
         }
 
+        public string getLabel(int Index)
+        {
+            return iOFileInfo.labels[Index];
+        }
+
         public void ApplyChanges()
         {
             FileInfo[] fi = iOFileInfo.fileInfos;
