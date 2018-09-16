@@ -1,0 +1,9 @@
+C:\Users\kerst\Desktop\spl-1.2.1\ImageOrganizer\ImageOrganizer\bin\Debug\ImageOrganizer.exe.config
+C:\Users\kerst\Desktop\spl-1.2.1\ImageOrganizer\ImageOrganizer\bin\Debug\ImageOrganizer.exe
+C:\Users\kerst\Desktop\spl-1.2.1\ImageOrganizer\ImageOrganizer\bin\Debug\ImageOrganizer.pdb
+C:\Users\kerst\Desktop\spl-1.2.1\ImageOrganizer\ImageOrganizer\obj\Debug\ImageOrganizer.Form1.resources
+C:\Users\kerst\Desktop\spl-1.2.1\ImageOrganizer\ImageOrganizer\obj\Debug\ImageOrganizer.Properties.Resources.resources
+C:\Users\kerst\Desktop\spl-1.2.1\ImageOrganizer\ImageOrganizer\obj\Debug\ImageOrganizer.csproj.GenerateResource.Cache
+C:\Users\kerst\Desktop\spl-1.2.1\ImageOrganizer\ImageOrganizer\obj\Debug\ImageOrganizer.exe
+C:\Users\kerst\Desktop\spl-1.2.1\ImageOrganizer\ImageOrganizer\obj\Debug\ImageOrganizer.pdb
+C:\Users\kerst\Desktop\spl-1.2.1\ImageOrganizer\ImageOrganizer\obj\Debug\ImageOrganizer.csprojResolveAssemblyReference.cache
