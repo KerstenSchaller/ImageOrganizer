@@ -4,7 +4,9 @@ A program which helps to organize images with mainly keyboard control.
 - First feature: Scroll through images of a folder with arrow keys and label images for certain subfolders. Apply Changes afterwards.
 
 Example:
+
 Before editing:
+
 Images -> A Folder full of images
 
 After Editing:
