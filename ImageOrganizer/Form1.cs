@@ -18,6 +18,7 @@ namespace ImageOrganizer
         FileInfo[] files;
         int imageindex = 0;
         bool keyControlEnabled = false;
+        ImageOrganizer imageOrganizer;
 
         public Form1()
         {
@@ -46,9 +47,12 @@ namespace ImageOrganizer
             const Keys ctrl_Right = (Keys.Control | Keys.Right);
             const Keys ctrl_Left = (Keys.Control | Keys.Left);
             const Keys returnenter = (Keys.Return | Keys.Enter);
+            const Keys shft_one = (Keys.Shift | Keys.D1);
+            const Keys shft_two = (Keys.Shift | Keys.D2);
+            const Keys ctrl_shft_a = (Keys.Shift | Keys.A | Keys.Control);
 
             DirectoryInfo di;
-            Bitmap bmp;
+           
             switch (keyData)
             {
                 case Right:
@@ -69,6 +73,25 @@ namespace ImageOrganizer
                         setImageBox();
                     }
 
+                    break;
+                case shft_one:
+                    if (keyControlEnabled == true)
+                    {
+                        imageOrganizer.setLabel(imageindex,"Label1");
+                    }
+
+                    break;
+                case shft_two:
+                    if (keyControlEnabled == true)
+                    {
+                        imageOrganizer.setLabel(imageindex, "Label2");
+                    }
+                    break;
+                case ctrl_shft_a:
+                    if (keyControlEnabled == true)
+                    {
+                        imageOrganizer.ApplyChanges();
+                    }
                     break;
 
 
@@ -101,6 +124,7 @@ namespace ImageOrganizer
 
             bmp = createBitmap(files[imageindex]);
             picBox_Imageview.Image = bmp;
+            bmp = null;
         }
 
 
@@ -120,7 +144,14 @@ namespace ImageOrganizer
             }
             else
             {
-                bmp = (Bitmap)Image.FromFile(file.FullName);
+                /*Workaround to release file lock imideately*/
+                Image img;
+                using (var bmpTemp = new Bitmap(file.FullName))
+                {
+                    img = new Bitmap(bmpTemp);
+                }
+
+                bmp = (Bitmap)img;
 
             }
             return bmp;
@@ -133,7 +164,12 @@ namespace ImageOrganizer
 
         }
 
-       
+        private void ApplyLabelsButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
         /*Opens a folder dialog and loads a first image after a folder was chosen*/
         private void SelectFolderButtonClick(object sender, EventArgs e)
         {
@@ -146,6 +182,7 @@ namespace ImageOrganizer
                 files = di.GetFiles();
                 keyControlEnabled = true;
                 setImageBox();
+                imageOrganizer = new ImageOrganizer(path);
             }
 
 
