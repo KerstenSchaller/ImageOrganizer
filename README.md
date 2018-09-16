@@ -15,3 +15,8 @@ Images -> A folder containing three subfolders and some images(which where not l
 Images/delete -> A subfolder containing images which where labelled with the delete folder
 Images/BirthdayPartyPics -> A subfolder containing images which where labelled with the BirthdayPartyPics folder
 Images/DayOnTheBeach -> A subfolder containing images which where labelled with the DayOnTheBeach folder
+
+Current implemented Commands:
+ctrl + RightArrow => Display next image
+ctrl + LeftArrow  => Display previous image
+
