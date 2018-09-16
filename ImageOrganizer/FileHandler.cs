@@ -10,6 +10,8 @@ namespace ImageOrganizer
 {
     class FileHandler
     {
+
+        /*Checks if file extension has image type*/
         public static bool checkExtensionForImage(FileInfo[] fis)
         {
             bool retval = false;
@@ -28,6 +30,7 @@ namespace ImageOrganizer
             return retval;
         }
 
+        /*Checks if file extension has image type*/
         public static string checkExtensionForImage(FileInfo fi)
         {
             string retval = "";
@@ -45,6 +48,7 @@ namespace ImageOrganizer
             return retval;
         }
 
+        /*Opens a file dialog and returns chosen path*/
         public static string OpenFolder()
         {
             string[] paths = { ""};
