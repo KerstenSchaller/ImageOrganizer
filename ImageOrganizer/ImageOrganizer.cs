@@ -21,6 +21,7 @@ namespace ImageOrganizer
             DirectoryInfo di = new DirectoryInfo(path);
             iOFileInfo.fileInfos = di.GetFiles();
             iOFileInfo.labels = new string[iOFileInfo.fileInfos.Length];
+            iOFileInfo.rotation = new int[iOFileInfo.fileInfos.Length];
 
             /*Initialize Labels*/
             for (int i = 0; i < iOFileInfo.labels.Count(); i++)
@@ -34,6 +35,17 @@ namespace ImageOrganizer
             addLabel("_weiterSortieren");
 
         }
+
+        public void setRotation(int rot,int Index)
+        {
+            iOFileInfo.rotation[Index] = rot;
+        }
+
+        public int getRotation( int Index)
+        {
+            return iOFileInfo.rotation[Index];
+        }
+
 
         public void addLabel(string newlabel)
         {
@@ -85,6 +97,7 @@ namespace ImageOrganizer
         public int ImageIndex;
         public string[] labels;
         public List<string> labeltypes = new List<string>();
+        public int[] rotation; 
 
         public ImageOrganizerFileInfo() { }
 

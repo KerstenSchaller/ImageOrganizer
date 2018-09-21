@@ -53,6 +53,7 @@ namespace ImageOrganizer
             const Keys ctrl_three = (Keys.Control | Keys.D3);
             const Keys ctrl_four = (Keys.Control | Keys.D4);
             const Keys ctrl_shft_a = (Keys.Shift | Keys.A | Keys.Control);
+            const Keys ctrl_r = (Keys.Control | Keys.R );
 
             DirectoryInfo di;
            
@@ -61,14 +62,31 @@ namespace ImageOrganizer
                 case Right:
                     if (keyControlEnabled == true)
                     {
-                        setImageBox("right");
+                        int rot = imageOrganizer.getRotation(imageindex+1);
+                        if (rot != 0)
+                        {
+                            setImageBox("right", rot);
+                        }
+                        else
+                        {
+                            setImageBox("right");
+                        }
                         setLabelDisplay();
+                        
                     }
                     break;
                 case Left:
                     if (keyControlEnabled == true)
                     {
-                        setImageBox("left");
+                        int rot = imageOrganizer.getRotation(imageindex-1);
+                        if(rot != 0)
+                        {
+                            setImageBox("left",rot);
+                        }
+                        else
+                        {
+                            setImageBox("left");
+                        }
                         setLabelDisplay();
                     }
                     break;
@@ -115,14 +133,25 @@ namespace ImageOrganizer
                         imageOrganizer.ApplyChanges();
                     }
                     break;
-
+                case ctrl_r:
+                    if (keyControlEnabled == true)
+                    {
+                        int rot = imageOrganizer.getRotation(imageindex);
+                        rot += 90;
+                        imageOrganizer.setRotation(rot, imageindex);
+                        setImageBox("static",rot);
+                        
+                    }
+                    break;
 
             }
 
         }
 
+        
+
         /*Sets the imagebox to an image from filelist depending on input action*/
-        public void setImageBox(string dir = "")
+        public void setImageBox(string dir = "0", int rot = 0)
         {
             Bitmap bmp;
             DirectoryInfo di = new DirectoryInfo(currentpath);
@@ -142,12 +171,19 @@ namespace ImageOrganizer
                 imageindex--;
             }
             else
-            if (dir == "")
+            if (dir == "0")
             {
                 imageindex = 0;
             }
-
-            bmp = createBitmap(files[imageindex]);
+            if (rot != 0)
+            {
+                bmp = createBitmap(files[imageindex],90);
+            }
+            else
+            {
+                bmp = createBitmap(files[imageindex]);
+            }
+            
             picBox_Imageview.Image = bmp;
             bmp = null;
         }
@@ -193,7 +229,7 @@ namespace ImageOrganizer
         }
 
         /*Creates a bitmap from a file and uses dcraw conversion if needed*/
-        private Bitmap createBitmap(FileInfo file)
+        private Bitmap createBitmap(FileInfo file, int rot = 0)
         {
             /*Convert input if neccesary*/
             Bitmap bmp=null;
@@ -217,6 +253,14 @@ namespace ImageOrganizer
 
                 bmp = (Bitmap)img;
 
+            }
+
+            if (rot != 0)
+            {
+                if (rot == 90)
+                {
+                    bmp.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                }
             }
             return bmp;
         }
