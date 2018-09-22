@@ -34,6 +34,12 @@
             this.DeleteLabelTextbox = new System.Windows.Forms.TextBox();
             this.WeiterbearbeitenTextBox = new System.Windows.Forms.TextBox();
             this.SortierenTextBox = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.picBox_Imageview)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,8 +75,10 @@
             // 
             // DeleteLabelTextbox
             // 
+            this.DeleteLabelTextbox.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.DeleteLabelTextbox.Location = new System.Drawing.Point(13, 117);
             this.DeleteLabelTextbox.Name = "DeleteLabelTextbox";
+            this.DeleteLabelTextbox.ReadOnly = true;
             this.DeleteLabelTextbox.Size = new System.Drawing.Size(214, 20);
             this.DeleteLabelTextbox.TabIndex = 4;
             this.DeleteLabelTextbox.Text = "Löschen";
@@ -78,8 +86,10 @@
             // 
             // WeiterbearbeitenTextBox
             // 
+            this.WeiterbearbeitenTextBox.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.WeiterbearbeitenTextBox.Location = new System.Drawing.Point(13, 143);
             this.WeiterbearbeitenTextBox.Name = "WeiterbearbeitenTextBox";
+            this.WeiterbearbeitenTextBox.ReadOnly = true;
             this.WeiterbearbeitenTextBox.Size = new System.Drawing.Size(214, 20);
             this.WeiterbearbeitenTextBox.TabIndex = 5;
             this.WeiterbearbeitenTextBox.Text = "Bearbeiten";
@@ -87,18 +97,99 @@
             // 
             // SortierenTextBox
             // 
+            this.SortierenTextBox.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.SortierenTextBox.Location = new System.Drawing.Point(13, 169);
             this.SortierenTextBox.Name = "SortierenTextBox";
+            this.SortierenTextBox.ReadOnly = true;
             this.SortierenTextBox.Size = new System.Drawing.Size(214, 20);
             this.SortierenTextBox.TabIndex = 6;
             this.SortierenTextBox.Text = "WeiterSortieren";
             this.SortierenTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.textBox1.Location = new System.Drawing.Point(13, 247);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(214, 20);
+            this.textBox1.TabIndex = 9;
+            this.textBox1.Text = "CustomLabel";
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox1.Visible = false;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.textBox2.Location = new System.Drawing.Point(13, 221);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(214, 20);
+            this.textBox2.TabIndex = 8;
+            this.textBox2.Text = "CustomLabel";
+            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox2.Visible = false;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.textBox3.Location = new System.Drawing.Point(13, 195);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
+            this.textBox3.Size = new System.Drawing.Size(214, 20);
+            this.textBox3.TabIndex = 7;
+            this.textBox3.Text = "customLabel";
+            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox3.Visible = false;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.textBox4.Location = new System.Drawing.Point(13, 325);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.ReadOnly = true;
+            this.textBox4.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.textBox4.Size = new System.Drawing.Size(214, 20);
+            this.textBox4.TabIndex = 12;
+            this.textBox4.Text = "CustomLabel";
+            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox4.Visible = false;
+            // 
+            // textBox5
+            // 
+            this.textBox5.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.textBox5.Location = new System.Drawing.Point(13, 299);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.ReadOnly = true;
+            this.textBox5.Size = new System.Drawing.Size(214, 20);
+            this.textBox5.TabIndex = 11;
+            this.textBox5.Text = "CustomLabel";
+            this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox5.Visible = false;
+            // 
+            // textBox6
+            // 
+            this.textBox6.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.textBox6.Location = new System.Drawing.Point(13, 273);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.ReadOnly = true;
+            this.textBox6.Size = new System.Drawing.Size(214, 20);
+            this.textBox6.TabIndex = 10;
+            this.textBox6.Text = "CustomLabel";
+            this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox6.Visible = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(942, 535);
+            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.textBox3);
             this.Controls.Add(this.SortierenTextBox);
             this.Controls.Add(this.WeiterbearbeitenTextBox);
             this.Controls.Add(this.DeleteLabelTextbox);
@@ -121,6 +212,12 @@
         private System.Windows.Forms.TextBox DeleteLabelTextbox;
         private System.Windows.Forms.TextBox WeiterbearbeitenTextBox;
         private System.Windows.Forms.TextBox SortierenTextBox;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox textBox6;
     }
 }
 
