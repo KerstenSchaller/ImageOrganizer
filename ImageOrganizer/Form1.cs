@@ -14,9 +14,9 @@ namespace ImageOrganizer
     public partial class Form1 : Form
     {
 
-        string rootpath, currentpath;
+
         FileInfo[] files;
-        int imageindex = 0;
+        
         bool keyControlEnabled = false;
         ImageOrganizer imageOrganizer;
         
@@ -25,12 +25,37 @@ namespace ImageOrganizer
         {
             InitializeComponent();
             clearLabelDisplay();
+            LoadImageOrganizer();
 
         }
 
-  
-
         
+
+        public void SaveImageOrganizer()
+        {
+            FileHandler.saveImageOrganizerToXML(imageOrganizer);
+        }
+
+        public void LoadImageOrganizer()
+        {
+            imageOrganizer = FileHandler.loadImageOrganizerFromXML();
+            if (imageOrganizer != null)
+            {
+                imageOrganizer.updateData();
+                setLabelDisplay();
+                setImageBoxStatic();
+                keyControlEnabled = true;
+            }
+        }
+
+        private void setImageBoxStatic()
+        {
+            int index = imageOrganizer.imageindex;
+            int rot = imageOrganizer.getRotation(index);
+
+            setImageBox("static", rot);
+        }
+
 
         /*Function used to receive keyboard events*/
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -62,15 +87,8 @@ namespace ImageOrganizer
                 case Right:
                     if (keyControlEnabled == true)
                     {
-                        int rot = imageOrganizer.getRotation(imageindex+1);
-                        if (rot != 0)
-                        {
-                            setImageBox("right", rot);
-                        }
-                        else
-                        {
-                            setImageBox("right");
-                        }
+                        int rot = imageOrganizer.getRotation(imageOrganizer.imageindex +1);
+                        setImageToTheRight(rot);
                         setLabelDisplay();
                         
                     }
@@ -78,15 +96,10 @@ namespace ImageOrganizer
                 case Left:
                     if (keyControlEnabled == true)
                     {
-                        int rot = imageOrganizer.getRotation(imageindex-1);
-                        if(rot != 0)
-                        {
-                            setImageBox("left",rot);
-                        }
-                        else
-                        {
-                            setImageBox("left");
-                        }
+                        int tempindex = imageOrganizer.imageindex - 1;
+                        tempindex = (tempindex >= 0) ? tempindex : 0; 
+                        int rot = imageOrganizer.getRotation(tempindex);
+                        setImageToTheLeft(rot);
                         setLabelDisplay();
                     }
                     break;
@@ -101,7 +114,7 @@ namespace ImageOrganizer
                 case ctrl_one:
                     if (keyControlEnabled == true)
                     {
-                        imageOrganizer.setLabel(imageindex,"_loeschen");
+                        imageOrganizer.setLabel("_loeschen");
                         setLoeschenLabelDisplay();
                     }
 
@@ -109,7 +122,7 @@ namespace ImageOrganizer
                 case ctrl_two:
                     if (keyControlEnabled == true)
                     {
-                        imageOrganizer.setLabel(imageindex, "_bearbeiten");
+                        imageOrganizer.setLabel("_bearbeiten");
                         setbearbeitenLabelDisplay();
                     }
                     break;
@@ -117,7 +130,7 @@ namespace ImageOrganizer
                     if (keyControlEnabled == true)
                     {
                         
-                        imageOrganizer.setLabel(imageindex, "_weiterSortieren");
+                        imageOrganizer.setLabel( "_weiterSortieren");
                         setSortierenLabelDisplay();
                     }
                     break;
@@ -136,9 +149,9 @@ namespace ImageOrganizer
                 case ctrl_r:
                     if (keyControlEnabled == true)
                     {
-                        int rot = imageOrganizer.getRotation(imageindex);
+                        int rot = imageOrganizer.getRotation(imageOrganizer.imageindex);
                         rot += 90;
-                        imageOrganizer.setRotation(rot, imageindex);
+                        imageOrganizer.setRotation(rot, imageOrganizer.imageindex);
                         setImageBox("static",rot);
                         
                     }
@@ -146,42 +159,53 @@ namespace ImageOrganizer
 
             }
 
+            SaveImageOrganizer();
+
         }
 
-        
+        public void setImageToTheLeft(int rot)
+        {
+            setImageBox("left",rot);
+        }
+
+        public void setImageToTheRight(int rot)
+        {
+            setImageBox("right", rot);
+        }
 
         /*Sets the imagebox to an image from filelist depending on input action*/
         public void setImageBox(string dir = "0", int rot = 0)
         {
             Bitmap bmp;
-            DirectoryInfo di = new DirectoryInfo(currentpath);
-            files = di.GetFiles();
+            
+            files = imageOrganizer.getFileInfos();
+            
 
-            if ((imageindex < files.Length) && (dir == "right"))
+            if ((imageOrganizer.imageindex < files.Length) && (dir == "right"))
             {
-                if ((imageindex + 1) < files.Length)
+                if ((imageOrganizer.imageindex + 1) < files.Length)
                 {
-                    imageindex++;
+                    imageOrganizer.imageindex++;
                 }
                 
             }
             else
-            if ((imageindex > 0) && (dir == "left"))
+            if ((imageOrganizer.imageindex > 0) && (dir == "left"))
             {
-                imageindex--;
+                imageOrganizer.imageindex--;
             }
             else
             if (dir == "0")
             {
-                imageindex = 0;
+                imageOrganizer.imageindex = 0;
             }
             if (rot != 0)
             {
-                bmp = createBitmap(files[imageindex],90);
+                bmp = createBitmap(files[imageOrganizer.imageindex],90);
             }
             else
             {
-                bmp = createBitmap(files[imageindex]);
+                bmp = createBitmap(files[imageOrganizer.imageindex]);
             }
             
             picBox_Imageview.Image = bmp;
@@ -191,11 +215,11 @@ namespace ImageOrganizer
 
         private void setLabelDisplay()
         {
-            string label = imageOrganizer.getLabel(imageindex);
+            string label = imageOrganizer.getLabel();
             if (label == "_loeschen") setLoeschenLabelDisplay();
             if (label == "_weiterSortieren") setSortierenLabelDisplay();
             if (label == "_bearbeiten") setbearbeitenLabelDisplay();
-            if (label == "") clearLabelDisplay();
+            if ((label == "") || (label == null)) clearLabelDisplay();
 
 
         }
@@ -286,13 +310,19 @@ namespace ImageOrganizer
             
             string path = FileHandler.OpenFolder();
             if (path != "")
-            { 
-                currentpath = path;
-                DirectoryInfo di = new DirectoryInfo(path);
-                files = di.GetFiles();
-                keyControlEnabled = true;
+            {
+
+
+                
+
+                imageOrganizer = new ImageOrganizer();
+                imageOrganizer.setPath(path);
+                files = imageOrganizer.getFileInfos();
                 setImageBox();
-                imageOrganizer = new ImageOrganizer(path);
+
+                keyControlEnabled = true;
+
+
             }
 
 

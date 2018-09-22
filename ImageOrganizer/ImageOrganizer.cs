@@ -5,29 +5,33 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using WorkingTimeTracker;
+
+using System.Xml.Serialization;
+
+
 namespace ImageOrganizer
 {
-    class ImageOrganizer
+    public class ImageOrganizer
     {
         /*Variable definitions*/
+        public string path;
+        public int imageindex = 0;
+        public int[] rotation = new int[10000];
+        public string[] labels = new string[10000];
+
+        [XmlIgnore]
         ImageOrganizerFileInfo iOFileInfo = new ImageOrganizerFileInfo();
-        string path;
+        
         
 
-        /*Constructor*/
-        public ImageOrganizer(string _path)
+        /*Updates all relevant data according to path*/
+        public void updateData()
         {
-            path = _path;
+            
             DirectoryInfo di = new DirectoryInfo(path);
             iOFileInfo.fileInfos = di.GetFiles();
-            iOFileInfo.labels = new string[iOFileInfo.fileInfos.Length];
-            iOFileInfo.rotation = new int[iOFileInfo.fileInfos.Length];
-
-            /*Initialize Labels*/
-            for (int i = 0; i < iOFileInfo.labels.Count(); i++)
-            {
-                iOFileInfo.labels[i] = "";
-            }
+            
 
             /*Add standart labels*/
             addLabel("_loeschen");
@@ -36,14 +40,19 @@ namespace ImageOrganizer
 
         }
 
+        public FileInfo[] getFileInfos()
+        {
+            return iOFileInfo.fileInfos;
+        }
+
         public void setRotation(int rot,int Index)
         {
-            iOFileInfo.rotation[Index] = rot;
+            rotation[Index] = rot;
         }
 
         public int getRotation( int Index)
         {
-            return iOFileInfo.rotation[Index];
+            return rotation[Index];
         }
 
 
@@ -53,20 +62,20 @@ namespace ImageOrganizer
         }
 
         /*Set Label for certain image*/
-        public void setLabel(int Index, string label)
+        public void setLabel(string label)
         {
-            iOFileInfo.labels[Index] = label;
+            labels[imageindex] = label;
         }
 
-        public string getLabel(int Index)
+        public string getLabel()
         {
-            return iOFileInfo.labels[Index];
+            return labels[imageindex];
         }
 
         public void ApplyChanges()
         {
             FileInfo[] fi = iOFileInfo.fileInfos;
-            string[] labels = iOFileInfo.labels;
+            
 
 
             foreach (string label in iOFileInfo.labeltypes)
@@ -88,16 +97,20 @@ namespace ImageOrganizer
             }
         }
 
-
+        internal void setPath(string Path)
+        {
+            path = Path;
+            updateData();
+        }
     }
 
     class ImageOrganizerFileInfo
     {
         public FileInfo[] fileInfos;
         public int ImageIndex;
-        public string[] labels;
+        
         public List<string> labeltypes = new List<string>();
-        public int[] rotation; 
+         
 
         public ImageOrganizerFileInfo() { }
 

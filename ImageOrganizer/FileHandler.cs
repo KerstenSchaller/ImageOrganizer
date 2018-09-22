@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using WorkingTimeTracker;
+
 namespace ImageOrganizer
 {
     class FileHandler
@@ -63,6 +65,40 @@ namespace ImageOrganizer
            
             }
             return "";
+         }
+
+        public static bool saveImageOrganizerToXML(ImageOrganizer io)
+        {
+            var dir = Directory.GetCurrentDirectory();
+            string path = Path.Combine(dir,"FileInfoFromLastUse.xml");
+            try
+            {
+                Serialization.WriteToXmlFile<ImageOrganizer>(path, io);
+                return true;
             }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+                return false;
+            }
+            
+        }
+
+        public static ImageOrganizer loadImageOrganizerFromXML()
+        {
+            var dir = Directory.GetCurrentDirectory();
+            string path = Path.Combine(dir, "FileInfoFromLastUse.xml");
+            try
+            {
+                return  Serialization.ReadFromXmlFile<ImageOrganizer>(path);
+                
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+
+        }
+
     }
 }
