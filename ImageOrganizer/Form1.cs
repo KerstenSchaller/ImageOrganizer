@@ -298,7 +298,7 @@ namespace ImageOrganizer
 
         private void ApplyLabelsButton_Click(object sender, EventArgs e)
         {
-
+            imageOrganizer.ApplyChanges();
         }
 
 
@@ -329,5 +329,17 @@ namespace ImageOrganizer
 
         }
 
+        private void DeleteLabelTextbox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void resetButton_Click(object sender, EventArgs e)
+        {
+            imageOrganizer.resetChanges();
+            setImageBoxStatic();
+            setLabelDisplay();
+
+        }
     }
 }

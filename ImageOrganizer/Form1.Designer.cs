@@ -40,6 +40,7 @@
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
+            this.resetButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picBox_Imageview)).BeginInit();
             this.SuspendLayout();
             // 
@@ -83,6 +84,7 @@
             this.DeleteLabelTextbox.TabIndex = 4;
             this.DeleteLabelTextbox.Text = "Löschen";
             this.DeleteLabelTextbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.DeleteLabelTextbox.TextChanged += new System.EventHandler(this.DeleteLabelTextbox_TextChanged);
             // 
             // WeiterbearbeitenTextBox
             // 
@@ -179,11 +181,22 @@
             this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBox6.Visible = false;
             // 
+            // resetButton
+            // 
+            this.resetButton.Location = new System.Drawing.Point(13, 494);
+            this.resetButton.Name = "resetButton";
+            this.resetButton.Size = new System.Drawing.Size(214, 29);
+            this.resetButton.TabIndex = 13;
+            this.resetButton.Text = "Reset Changes";
+            this.resetButton.UseVisualStyleBackColor = true;
+            this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(942, 535);
+            this.Controls.Add(this.resetButton);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.textBox6);
@@ -218,6 +231,7 @@
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.Button resetButton;
     }
 }
 
