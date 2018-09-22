@@ -211,6 +211,8 @@
             this.Controls.Add(this.picBox_Imageview);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.ResizeEnd += new System.EventHandler(this.Form1_ResizeEnd);
+            this.SizeChanged += new System.EventHandler(this.Form1_SizeChanged);
             ((System.ComponentModel.ISupportInitialize)(this.picBox_Imageview)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

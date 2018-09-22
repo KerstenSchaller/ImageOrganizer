@@ -107,6 +107,7 @@ namespace ImageOrganizer
         {
             labels   = new string[10*1000];
             rotation = new int[10 * 1000];
+            updateData();
             
         }
     }

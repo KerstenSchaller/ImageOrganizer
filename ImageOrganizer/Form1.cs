@@ -42,9 +42,12 @@ namespace ImageOrganizer
             if (imageOrganizer != null)
             {
                 imageOrganizer.updateData();
-                setLabelDisplay();
-                setImageBoxStatic();
-                keyControlEnabled = true;
+                if (imageOrganizer.getFileInfos().Length > 0)
+                { 
+                    setLabelDisplay();
+                    setImageBoxStatic();
+                    keyControlEnabled = true;
+                }
             }
         }
 
@@ -79,6 +82,15 @@ namespace ImageOrganizer
             const Keys ctrl_four = (Keys.Control | Keys.D4);
             const Keys ctrl_shft_a = (Keys.Shift | Keys.A | Keys.Control);
             const Keys ctrl_r = (Keys.Control | Keys.R );
+            const Keys k1 = Keys.D1;
+            const Keys k2 = Keys.D2;
+            const Keys k3 = Keys.D3;
+            const Keys k4 = Keys.D4;
+            const Keys k5 = Keys.D5;
+            const Keys k6 = Keys.D6;
+            const Keys k7 = Keys.D7;
+            const Keys k8 = Keys.D8;
+            const Keys k9 = Keys.D9;
 
             DirectoryInfo di;
            
@@ -111,7 +123,7 @@ namespace ImageOrganizer
                     }
 
                     break;
-                case ctrl_one:
+                case k1:
                     if (keyControlEnabled == true)
                     {
                         imageOrganizer.setLabel("_loeschen");
@@ -119,14 +131,14 @@ namespace ImageOrganizer
                     }
 
                     break;
-                case ctrl_two:
+                case k2:
                     if (keyControlEnabled == true)
                     {
                         imageOrganizer.setLabel("_bearbeiten");
                         setbearbeitenLabelDisplay();
                     }
                     break;
-                case ctrl_three:
+                case k3:
                     if (keyControlEnabled == true)
                     {
                         
@@ -179,6 +191,10 @@ namespace ImageOrganizer
             Bitmap bmp;
             
             files = imageOrganizer.getFileInfos();
+            if (files.Length < imageOrganizer.imageindex)
+            {
+                imageOrganizer.imageindex = 0;
+            }
             
 
             if ((imageOrganizer.imageindex < files.Length) && (dir == "right"))
@@ -255,6 +271,9 @@ namespace ImageOrganizer
         /*Creates a bitmap from a file and uses dcraw conversion if needed*/
         private Bitmap createBitmap(FileInfo file, int rot = 0)
         {
+            
+
+
             /*Convert input if neccesary*/
             Bitmap bmp=null;
             if (".cr2" == FileHandler.checkExtensionForImage(file))
@@ -268,14 +287,19 @@ namespace ImageOrganizer
             }
             else
             {
-                /*Workaround to release file lock imideately*/
-                Image img;
-                using (var bmpTemp = new Bitmap(file.FullName))
+                if ("" != FileHandler.checkExtensionForImage(file))
                 {
-                    img = new Bitmap(bmpTemp);
-                }
+                    /*Workaround to release file lock imideately*/
+                    Image img;
+                    using (var bmpTemp = new Bitmap(file.FullName))
+                    {
+                        img = new Bitmap(bmpTemp);
 
-                bmp = (Bitmap)img;
+                        bmp = (Bitmap)img;
+
+                    }
+
+                }
 
             }
 
@@ -299,6 +323,8 @@ namespace ImageOrganizer
         private void ApplyLabelsButton_Click(object sender, EventArgs e)
         {
             imageOrganizer.ApplyChanges();
+            imageOrganizer.imageindex = 0;
+            reset();
         }
 
 
@@ -336,10 +362,27 @@ namespace ImageOrganizer
 
         private void resetButton_Click(object sender, EventArgs e)
         {
+
+            reset();
+        }
+
+        private void reset()
+        {
             imageOrganizer.resetChanges();
             setImageBoxStatic();
             setLabelDisplay();
+        }
 
+        private void Form1_ResizeEnd(object sender, EventArgs e)
+        {
+            picBox_Imageview.Width = this.Width - 233;
+            picBox_Imageview.Height = this.Height - 16;
+        }
+
+        private void Form1_SizeChanged(object sender, EventArgs e)
+        {
+            picBox_Imageview.Width = this.Width - 233;
+            picBox_Imageview.Height = this.Height - 16;
         }
     }
 }
